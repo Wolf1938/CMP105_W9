@@ -17,20 +17,24 @@ Level::~Level()
 // handle user input
 void Level::handleInput(float dt)
 {
-
+	if (input->isKeyDown(sf::Keyboard::Space))
+	{
+		input->setKeyUp(sf::Keyboard::Space);
+		ballManager.spawn();
+	}
 }
 
 // Update game objects
 void Level::update(float dt)
 {
-	
+	ballManager.update(dt);
 }
 
 // Render level
 void Level::render()
 {
 	beginDraw();
-
+	ballManager.render(window);
 	endDraw();
 }
 
